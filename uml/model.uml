@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:Codegen="http://www.eclipse.org/papyrus/Codegen/1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
   <uml:Model xmi:id="_vZlysDmVEeePRZD9_2iBbQ" name="Ahorcado">
-    <packagedElement xmi:type="uml:Class" xmi:id="_vUAAsDmYEeePRZD9_2iBbQ" name="Ahorcado"/>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_yt_cMDsVEeeUjulZymBmtQ">
+      <importedPackage xmi:type="uml:Model" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_DV8nkBv8EduZN5aJJITI5w"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Class" xmi:id="_vUAAsDmYEeePRZD9_2iBbQ" name="Partida">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_0PBmkDsUEeeUjulZymBmtQ" name="mostrarProgreso"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_1dbTYDsUEeeUjulZymBmtQ" name="pedirLetra">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Now2ADsVEeeUjulZymBmtQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5lVhgBydEduyofBvg4RL2w"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_RXwQQDsVEeeUjulZymBmtQ" name="resolver"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_chLbwDsVEeeUjulZymBmtQ" name="comprobarFinal"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_60CjIDmdEeePRZD9_2iBbQ" name="Palabra" visibility="public">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_fIFCADsUEeeUjulZymBmtQ" name="palabraOculta" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_nN6gsDsUEeeUjulZymBmtQ" name="letrasDescubiertas" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5lVhgBydEduyofBvg4RL2w"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ujni8DsUEeeUjulZymBmtQ" name="letrasFallidas" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_5lVhgBydEduyofBvg4RL2w"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_LLUYoDsUEeeUjulZymBmtQ" name="elegirPalabra"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_LetOsDsUEeeUjulZymBmtQ" name="comprobarLetra">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_UZg7oDsWEeeUjulZymBmtQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_L0bAADsUEeeUjulZymBmtQ" name="mostrarResultados"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MQvvoDsUEeeUjulZymBmtQ" name="comprobarSiGanado">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_XYwT8DsWEeeUjulZymBmtQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_vAIV4I7PEdySGvm5GN66HA"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MfSh8DsUEeeUjulZymBmtQ" name="comprobarPalabra">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_c-i3wDsWEeeUjulZymBmtQ" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_8SREQDsUEeeUjulZymBmtQ" name="Horca">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_naP3EDsVEeeUjulZymBmtQ" name="fallo" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
+      </ownedAttribute>
+    </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EbthoDmWEeePRZD9_2iBbQ">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ebv94DmWEeePRZD9_2iBbQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/Codegen/1#/"/>
