@@ -46,6 +46,9 @@
       <ownedAttribute xmi:type="uml:Property" xmi:id="_naP3EDsVEeeUjulZymBmtQ" name="fallo" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="pathmap://PapyrusJava_LIBRARIES/JavaLibrary.uml#_7wRIABydEduyofBvg4RL2w"/>
       </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_OxkGUECVEeejKNMdL4PYNQ" name="dibujar"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_UH6f8ECVEeejKNMdL4PYNQ" name="incrementarFallo"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VmWM0ECVEeejKNMdL4PYNQ" name="comprobarSiPerdido"/>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_EbthoDmWEeePRZD9_2iBbQ">
       <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Ebv94DmWEeePRZD9_2iBbQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
