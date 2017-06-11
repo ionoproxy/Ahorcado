@@ -4,124 +4,236 @@
 
 package Ahorcado;
 
-/************************************************************/
 /**
- * 
+ * Esta clase se encarga de almacenar diferentes palabras para el juego,
+ * la cual emplea funciones que servirán para el transcurso del juego además de seleccionar una palabra de manera aleatoria.
+ *
+ * @author ionoproxy
  */
+
 public class Palabra {
+	/**
+	 * Variable que contiene el número de letras que hay en el abecedario.
+	 */
+
 	private static final int NUM_LETRAS_ABECEDARIO = 27;
 	/**
-	 * 
+	 * Variable que contiene la palabra seleccionada para el juego.
 	 */
+
 	private String palabraOculta;
+
 	/**
-	 * son las letras que el jugador ha acertado
+	 * Array que contendrá las letras que el jugador haya introducido como respuesta, pero sean incorrectas.
 	 */
-	private char[] letrasDescubiertas = new char[NUM_LETRAS_ABECEDARIO];
-	/**
-	 * son las letras que el jugador ha dicho pero no estaban en la palabra
-	 */
+
 	private char[] letrasFallidas = new char[NUM_LETRAS_ABECEDARIO];
 
 	/**
-	 * 
+	 * Array que contendrá las letras que el jugador haya introducido como respuesta, y sean correctas.
 	 */
-	public void elegirPalabra() {
-		String[] palabras = { "Jirafa", "Perro", "Gato", "Gallo", "Elefante", "Rata", "Tortuga" };
-		String elegida = palabras[(int) (Math.round(Math.random() * (palabras.length - 1)))];
-		palabraOculta = elegida;
-	}
+
+	private char[] letrasDescubiertas = new char[NUM_LETRAS_ABECEDARIO];
+
+
 
 	/**
-	 * Comprueba si la letra ya ha sido usada.
+	 * Función que asigna a la variable palabraOculta una palabra aleatoria para cada vez que se llame a la función.
 	 */
+
+	public void elegirPalabra() {
+
+		String[] palabras = { "jirafa", "perro", "gato", "gallo", "elefante", "rata", "tortuga" };
+
+		String elegida = palabras[(int) (Math.random() * (palabras.length - 1))];
+
+		palabraOculta = elegida;
+
+	}
+
+
+
+	/**
+	 * Función que comprueba si la letra introducida por el jugador ya ha sido utilizada.
+	 * 
+	 * @param letra
+	 *            El valor de este parámetro será la letra que el jugador haya introducido como respuesta.
+	 * @return 
+	 * 			  Devolverá true en caso de que la letra introducida por el usuario esté dentro del array letrasDescubiertas
+	 * 			  o dentro del array letrasFallidas, en caso de que no esté, devolverá false.
+	 */
+
 	public boolean comprobarLetraUsada(char letra) {
+
 		for (int i = 0; i < letrasDescubiertas.length; i++) {
 			if (letra == letrasDescubiertas[i]) {
 				return true;
 			}
 		}
+
 		for (int i = 0; i < letrasFallidas.length; i++) {
 			if (letra == letrasFallidas[i]) {
 				return true;
 			}
-
 		}
+
 		return false;
+
 	}
 
+
+
 	/**
-	 * comprueba si letra está en la palabra oculta (no comprueba si la letra ha
-	 * sido usada) y la almacena como acertada o fallida
+	 * Función que comprueba si la letra introducida por el jugador es una letra que contiene la palabra oculta, para
+	 * posteriormente insertarla en alguno de los array letrasFallidas o letrasDescubiertas.
 	 * 
 	 * @param letra
-	 *            es la letra a comprobar si está en la palabra a adivinar
-	 * @return estaba devuelve verdadero si la letra está al menos una vez en la
-	 *         palabra y falso en caso contrario
+	 *            Parámetro que tendrá como valor la letra que el jugador haya respondido, para ser comprobada.
+	 * @return 
+	 *    		  Devuelve true en caso de que la letra a comprobar sea una letra que contiene la palabra a adivinar,
+	 *    		  en caso de que la palabra a adivinar no contenga la letra, devolverá false.
+	 * 
 	 */
+
 	public boolean comprobarLetra(char letra) {
 
 		if (palabraOculta.indexOf(letra) == -1) {
 			insertarLetra(letra, letrasFallidas);
+			Horca.incrementarFallo();
 			return false;
+			
 		} else {
 			insertarLetra(letra, letrasDescubiertas);
 			return true;
+
 		}
 	}
 
+
+
+	/**
+	 * Función que nos permite insertar una letra dentro del array que le especifiquemos.
+	 * 
+	 * @param letra
+	 *            Parámetro que tendrá como valor la letra que vaya a ser insertada.
+	 * @param destino
+	 *            Parámetro que tendrá como valor la referencia al array al que queremos insertarle una letra
+	 *            en su primer índice que sea igual a nulo.
+	 */
+
 	private void insertarLetra(char letra, char[] destino) {
-		// inserta la letra en la primera posicion vacía
+
 		for (int i = 0; i < destino.length; i++) {
 			if (destino[i] == '\u0000') {
 				destino[i] = letra;
 				break;
+
 			}
 		}
 	}
 
-	/**
-	 * mostramos el estado de la palabra, las letras acertadas y las letras
-	 * fallidas
-	 */
-	public void mostrarResultados() {
-	}
+
 
 	/**
-	 * comprueba si hemos acertado todas las letras
-	 * 
-	 * @return ganado
+	 * Función que muestra al jugador el progreso que va teniendo la partida en interacción con las letras que va
+	 * poniendo como respuesta.
 	 */
-	public boolean comprobarSiGanado() {
-		boolean estanTodas = true;
-		char[] descompuesta = palabraOculta.toCharArray();
-		
-		for (int i = 0; i < descompuesta.length; i++) {
+
+	public void mostrarResultados() {
+
+		char[] descompueta = palabraOculta.toCharArray();
+
+		System.out.print("- Progreso: ");
+
+		for (int i = 0; i < descompueta.length; i++) {
 			boolean estaEnDescubiertas = false;
+
 			for (int j = 0; j < letrasDescubiertas.length; j++) {
-				if (descompuesta[i] == letrasDescubiertas[j]) {
+				if (descompueta[i] == letrasDescubiertas[j]) {
 					estaEnDescubiertas = true;
 					break;
+
 				}
 			}
+
+			if (estaEnDescubiertas)
+				System.out.print(descompueta[i]);
+
+			else
+				System.out.print("_");
+
+		}
+
+		System.out.println();
+
+		System.out.print("\n- Letras acertadas: ");
+
+		for (int i = 0; i < letrasDescubiertas.length; i++) {
+			if (letrasDescubiertas[i] != '\u0000')
+				System.out.print(letrasDescubiertas[i]);
+
+		}
+
+		System.out.println();
+		System.out.print("- Letras fallidas: ");
+
+		for (int i = 0; i < letrasFallidas.length; i++) {
+			if (letrasDescubiertas[i] != '\u0000')
+				System.out.print(letrasFallidas[i]);
+
+		}
+
+		System.out.println();
+
+	}
+
+
+
+	/**
+	 * Función que comprueba si el jugador ha ganado.
+	 * 
+	 * @return Devolverá true en caso de que el jugador haya acertado todas las letras de la palabra,
+	 * 		   devolverá false en caso de que el jugador no haya acertado todas las letras de la palabra.
+	 */
+
+	public boolean comprobarSiGanado() {
+		boolean estanTodas = true;
+		char[] descompueta = palabraOculta.toCharArray();
+
+		for (int i = 0; i < descompueta.length; i++) {
+			boolean estaEnDescubiertas = false;
+			for (int j = 0; j < letrasDescubiertas.length; j++) {
+				if (descompueta[i] == letrasDescubiertas[j]) {
+					estaEnDescubiertas = true;
+					break;
+
+				}
+			}
+
 			if (!estaEnDescubiertas) {
 				estanTodas = false;
 				break;
+
 			}
+
 		}
-		
+
 		return estanTodas;
+
 	}
 
+
+
 	/**
-	 * comprueba si la palabra propuesta por el jugador coincide con la palabra
-	 * oculta (quiero resolver)
+	 * Función que se encarga de comprobar si la palabra introducida por el jugador es igual a la palabra a adivinar.
 	 * 
 	 * @param palabra
-	 * @return adivinada adivinada es verdadero si la palabra coincide con la
-	 *         que buscábamos
+	 *            Parámetro que tiene como valor la palabra introducida por el usuario para resolver el juego.
+	 * @return Devolverá true en caso de que el parámetro palabra sea igual a la palabra a adivinar.
 	 */
 	public boolean comprobarPalabra(String palabra) {
-		return palabraOculta.equals(palabra);
+		return (palabraOculta.equals(palabra));
+
 	}
-};
+
+}

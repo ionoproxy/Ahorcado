@@ -1,25 +1,23 @@
 package Ahorcado;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+
+import static org.junit.Assert.*;
+
+
 
 import org.junit.Before;
+
 import org.junit.Test;
+
+
 
 public class HorcaTest {
 
 	private Horca horca;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		horca = new Horca();
-	}
-	
-	@Test
-	public void testDibujar() {
-		fail("Not yet implemented");
 	}
 
 	@Test
@@ -30,13 +28,14 @@ public class HorcaTest {
 
 	@Test
 	public void testComprobarSiPerdido() {
-		for (int i = 0; i < horca.MAX_FALLOS-1; i++) {
+		for (int i = 0; i < horca.MAX_FALLOS - 1; i++) {
 			horca.incrementarFallo();
 			assertFalse(horca.comprobarSiPerdido());
 		}
 		horca.incrementarFallo();
 		assertTrue(horca.comprobarSiPerdido());
-		
 	}
+
+
 
 }

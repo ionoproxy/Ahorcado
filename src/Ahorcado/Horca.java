@@ -4,40 +4,79 @@
 
 package Ahorcado;
 
-/************************************************************/
 /**
+ * Clase que genera una nueva Horca para el juego.
  * 
+ * @author ionoproxy
  */
 public class Horca {
-	protected static final int MAX_FALLOS = 6;
 	/**
-	 * 
+	 * Variable final que contiene el máximo de fallos que un jugador puede tener en una partida.
 	 */
-	private int fallo;
-
-	public int getFallos(){
-		return this.fallo;
+	protected static final int MAX_FALLOS = 6;
+	
+	/**
+	 * Variable que contendrá el número de fallos que haya cometido el jugador en la partida.
+	 */
+	private int fallos;
+	
+	/**
+	 * Constructor de la clase Horca. Cada vez que se instancia una Horca, el valor de su único atributo será igual a 0.
+	 */
+	public Horca() {
+		fallos = 0;
 	}
 	
 	/**
-	 * 
+	 * Función que devolverá el valor de la variable fallos.
 	 */
+	public int getFallos(){
+		return this.fallos;
+	}
+
+	/**
+	 * Función que mostrará al jugador la cantidad de fallos que ha tenido.
+	 * También, dependiendo de la cantidad de fallos que el jugador vaya teniendo, mostrará un mensaje a modo de entretenimiento e información.
+	 */
+
 	public void dibujar() {
+
+		System.out.println("Fallos: " + fallos);
+
+		if (fallos <= 1 && fallos > 0)
+			System.out.println("Ten cuidado...\n");
+
+		else if (fallos <= 2 && fallos >= 1)
+			System.out.println("¿Otro fallo más?");
+
+		else if (fallos <= 4 && fallos >= 2)
+			System.out.println("¡Estás a punto de perder!\n");
+
+		else if (fallos >= 5)
+			System.out.println("¡¡Te queda una vida!!\n");
+
 	}
 
+
+
 	/**
-	 * 
+	 * Función que incrementa en uno el valor del atributo fallos de Horca.
 	 */
-	public void incrementarFallo() {
-		fallo++;
+	public static void incrementarFallo() {
+		fallos++;
 	}
 
+
+
 	/**
-	 * 
+	 * Función que comprueba si el número máximo de fallos ha sido alcanzado.
+	 *
+	 * @return Devolverá true en caso de que la variable fallos sea igual al número máximo de fallos.
+	 * 		   Devolverá false en caso de que la variable fallos no sea igual al número máximo de fallos.
 	 */
 	public boolean comprobarSiPerdido() {
-		return (fallo == MAX_FALLOS);
+		return (fallos == MAX_FALLOS);
 	}
-	
+
 	
 };
