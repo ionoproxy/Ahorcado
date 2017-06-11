@@ -18,7 +18,7 @@ public class Horca {
 	/**
 	 * Variable que contendrá el número de fallos que haya cometido el jugador en la partida.
 	 */
-	private int fallos;
+	private static int fallos;
 	
 	/**
 	 * Constructor de la clase Horca. Cada vez que se instancia una Horca, el valor de su único atributo será igual a 0.
@@ -29,6 +29,7 @@ public class Horca {
 	
 	/**
 	 * Función que devolverá el valor de la variable fallos.
+	 * @return Devolverá el valor de fallos
 	 */
 	public int getFallos(){
 		return this.fallos;
